@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Data Structures</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="data_structures.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <a href="index.html">Back to Study Guide</a>
+        <h1>Data Structures</h1>
+
+        <h2>Arrays</h2>
+        <p>Simple, fixed-size collections of elements.</p>
+        <p><strong>Examples:</strong></p>
+        <ul>
+            <li>Array Declaration</li>
+            <pre><code>int[] arr = new int[5];</code></pre>
+            <li>Accessing Elements</li>
+            <pre><code>arr[0] = 1;</code></pre>
+        </ul>
+
+        <h2>Linked Lists</h2>
+        <p>Collections of elements, called nodes, that are connected.</p>
+        <p><strong>Examples:</strong></p>
+        <ul>
+            <li>Singly Linked List</li>
+            <pre><code>class Node {
+  int data;
+  Node next;
+}</code></pre>
+            <li>Doubly Linked List</li>
+            <pre><code>class Node {
+  int data;
+  Node next;
+  Node prev;
+}</code></pre>
+        </ul>
+
+        <h2>Trees</h2>
+        <p>Hierarchical structures with a root element and children.</p>
+        <p><strong>Examples:</strong></p>
+        <ul>
+            <li>Binary Tree</li>
+            <pre><code>class Node {
+  int data;
+  Node left;
+  Node right;
+}</code></pre>
+            <li>Binary Search Tree</li>
+            <pre><code>// Similar structure to Binary Tree, but follows BST properties</code></pre>
+        </ul>
+
+        <h2>Hash Tables</h2>
+        <p>Key-value pairs stored for quick look-up.</p>
+        <p><strong>Examples:</strong></p>
+        <ul>
+            <li>Hash Function</li>
+            <pre><code>int hashFunction(int key) {
+  return key % 10;
+}</code></pre>
+            <li>Collision Resolution</li>
+            <pre><code>// Using open addressing or chaining</code></pre>
+        </ul>
+
+        <h2>Graphs</h2>
+        <p>Networks of nodes connected by edges.</p>
+        <p><strong>Examples:</strong></p>
+        <ul>
+            <li>Directed Graph</li>
+            <pre><code>// Usually represented as an adjacency matrix or list</code></pre>
+            <li>Undirected Graph</li>
+            <pre><code>// Similar to directed graph but edges are bidirectional</code></pre>
+        </ul>
+
+        <a href="index.html">Back to Study Guide</a>
+    </div>
+
+</body>
+
+</html>

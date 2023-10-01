@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Algorithms - Dijkstra's Algorithm</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+	<div class="container">
+		<a href="index.html">Back to Study Guide</a>
+		<h1>Dijkstra's Algorithm</h1>
+
+		<h2>How it Works</h2>
+		<p>Dijkstra's Algorithm is used to find the shortest path in a weighted graph from a starting node to all other
+			nodes.</p>
+		<ul>
+			<li>Initialize distances to all nodes as infinity, except the starting node which is 0.</li>
+			<li>Use a priority queue to keep track of nodes with the shortest distance.</li>
+			<li>Pick the node with the smallest known distance and update its neighbors.</li>
+			<li>Repeat until all nodes are visited.</li>
+		</ul>
+
+		<h2>Applications</h2>
+		<ul>
+			<li>Route planning in GPS.</li>
+			<li>Network routing protocols.</li>
+			<li>Shortest path problems in robotics.</li>
+		</ul>
+
+		<h2>Code Example</h2>
+		<pre>
+	  <code>
+import heapq
+
+def dijkstra(graph, start):
+	distances = {node: float('inf') for node in graph}
+	distances[start] = 0
+	queue = [(0, start)]
+
+	while queue:
+	current_distance, current_node = heapq.heappop(queue)
+
+	if current_distance &gt; distances[current_node]:
+		continue
+
+	for neighbor, weight in graph[current_node].items():
+		distance = current_distance + weight
+
+		if distance &lt; distances[neighbor]:
+		distances[neighbor] = distance
+		heapq.heappush(queue, (distance, neighbor))
+
+	return distances
+	  </code>
+	</pre>
+
+		<a href="index.html">Back to Study Guide</a>
+	</div>
+
+</body>
+
+</html>
