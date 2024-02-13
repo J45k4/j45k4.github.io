@@ -8,16 +8,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
         }
 
         .container {
-            width: 80%;
+            max-width: 800px;
             margin: auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         header {
             text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #333;
+        }
+
+        header p {
+            margin: 5px 0;
+            color: #666;
         }
 
         .section {
@@ -25,27 +44,18 @@
         }
 
         h2 {
-            color: navy;
+            border-bottom: 2px solid #4CAF50;
+            color: #333;
+            padding-bottom: 5px;
         }
 
-        .work-experience,
-        .education {
-            margin-left: 20px;
-        }
-
-        .date {
-            font-style: italic;
-        }
-
-        .skills-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-family: Arial, sans-serif;
+        .work-experience p,
+        .education p {
+            margin: 10px 0;
         }
 
         .skills-table th,
         .skills-table td {
-            border: 1px solid #dddddd;
             text-align: left;
             padding: 8px;
         }
@@ -58,6 +68,24 @@
         .skills-table tr:nth-child(even) {
             background-color: #f2f2f2;
         }
+
+        .date {
+            font-style: italic;
+            color: #666;
+        }
+
+        @media screen and (max-width: 600px) {
+            .container {
+                width: 95%;
+                margin: 20px auto;
+            }
+
+            .work-experience,
+            .education,
+            .skills-table {
+                margin-left: 0;
+            }
+        }
     </style>
 </head>
 
@@ -67,188 +95,186 @@
             <h1>Teemu Pusa</h1>
             <p>Email: pusanteemu@gmail.com</p>
         </header>
-        <div style="display: flex; flex-wrap: wrap; justify-content: center;">
-            <div style="max-width: 600px;">
-                <div class="section">
-                    <h2>Introduction</h2>
-                    <p>
-                        I am an enthusiastic Software Developer with a strong passion for continuous learning and
-                        innovation.
-                        My primary hobby revolves around programming, where I dedicate myself to exploring and mastering
-                        new technologies and concepts.
-                        In my free time, I engage in various projects, with a particular focus on developing web
-                        applications, designing interactive games,
-                        and delving into the fascinating world of Artificial Intelligence.
-                    </p>
-                </div>
-                <div class="section">
-                    <h2>Personal Projects</h2>
-                    <p>
-                        <ul>
-                            <li><a href="https://github.com/J45k4/catgpt">CatGPT</a></li>
-                            <li><a href="https://github.com/J45k4/talktocow">Talktocow</a></li>
-							<li><a href="https://github.com/J45k4/FlexScript">FlexScript</a></li>
-                        </ul>
-                    </p>
-                </div>
-                <div class="section">
-                    <h2>Work Experience</h2>
-                    <div class="work-experience">
-                        <p><strong>Pusatec Oy</strong> - Full Stack Software Developer</p>
-                        <p class="date">Nov 2017 - Present</p>
-                        <p>Projects:</p>
-                        <ul>
-                            <li>
-                                Full Stack Software Developer for an online ticketing system utilized by 
-                                bus payment terminals, swimming halls/spas, and restaurants.
-                            </li>
-                            <li>
-                                Full Stack Software Developer and System Maintainer 
-                                for a real-time management system for smart locker systems and access control gates.
-                            </li>
-                            <li>
-                                Rust and C++ development for embedded payment systems.
-                            </li>
-                            <li>
-                                Develop software to communicate with smart lockers using canbus.
-                            </li>
-                            <li>
-                                Develop software to communicate with MIFARE cards using NFC.
-                            </li>
-                            <li>
-                                Develop delivery software using smart lockers manufactered by Pusatec.
-                            </li>
-                            <li>
-                                Master Thesis: AI-assisted anomaly detection from log data
-                            </li>
-                        </ul>
-                        <p>Technologies:</p>
-                        <ul>
-                            <li>Languages: TypeScript, qml, C++, Rust, C# and C</li>
-                            <li>NodeJS</li>
-                            <li>React.js</li>
-                            <li>Next.js</li>
-                            <li>GraphQL</li>
-                            <li>PostgreSQL</li>
-                            <li>Kubernetes</li>
-                            <li>Docker</li>
-                            <li>gRPC</li>
-                            <li>QT</li>
-                            <li>Gitlab</li>
-                            <li>Various Google Cloud Platform products: Firebase, GKE, Stackdriver</li>
-                        </ul>
-                    </div>
-                    <div class="work-experience">
-                        <p><strong>Rediteq Oy</strong> - Full Stack Software Developer</p>
-                        <p class="date">April 2016 - Nov 2017</p>
-                        <p>Projects:</p>
-                        <ul>
-                            <li>Resource planning software for an education management product.</li>
-                            <li>Budgeting software for an education management product.</li>
-                        </ul>
-                        <p>Technologies:</p>
-                        <ul>
-                            <li>C#</li>
-                            <li>ReactJS</li>
-                            <li>Microsoft SQL Server</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="section">
-                    <h2>Education</h2>
-                    <div class="education">
-                        <p><strong>University of Turku</strong> - Master's degree - 2023</p>
-                        <p>Majored in Software Development and minored in Data Science</p>
-                    </div>
-                    <div class="education">
-                        <p><strong>Turku University of Applied Sciences</strong> - Bachelor's degree - 2020</p>
-                        <p>Majored in embedded Software Development</p>
-                    </div>
-                </div>
+        <div class="section">
+            <h2>Introduction</h2>
+            <p>
+                I am an enthusiastic Software Developer with a strong passion for continuous learning and
+                innovation.
+                My primary hobby revolves around programming, where I dedicate myself to exploring and mastering
+                new technologies and concepts.
+                In my free time, I engage in various projects, with a particular focus on developing web
+                applications, designing games, and learning about artificial intelligence.
+            </p>
+        </div>
+        <div class="section">
+            <h2>Personal Projects</h2>
+            <p>
+            <ul>
+                <li><a href="https://github.com/J45k4/catgpt">CatGPT</a></li>
+                <li><a href="https://github.com/J45k4/talktocow">Talktocow</a></li>
+                <li><a href="https://github.com/J45k4/FlexScript">FlexScript</a></li>
+            </ul>
+            </p>
+        </div>
+        <div class="section">
+            <h2>Work Experience</h2>
+            <div class="work-experience">
+                <p><strong>Pusatec Oy</strong> - Full Stack Software Developer</p>
+                <p class="date">Nov 2017 - Present</p>
+                <!-- <p>
+                            Pusatec produces smart locker systems, buss payment terminals and access control systems. 
+                            It is has largest market share in providing smart lockersystems and access control systems.
+                            and it is largest payment terminal provider.
+                        </p> -->
+                <p>Projects:</p>
+                <ul>
+                    <li>
+                        Full Stack Software Developer for an online ticketing system utilized by
+                        bus payment terminals, swimming halls/spas, and restaurants.
+                    </li>
+                    <li>
+                        Full Stack Software Developer and System Maintainer
+                        for a real-time management system for smart locker systems and access control gates.
+                    </li>
+                    <li>
+                        Rust and C++ development for embedded payment systems.
+                    </li>
+                    <li>
+                        Develop software to communicate with smart lockers using canbus.
+                    </li>
+                    <li>
+                        Develop software to communicate with MIFARE cards using NFC.
+                    </li>
+                    <li>
+                        Develop delivery software using smart lockers manufactered by Pusatec.
+                    </li>
+                    <li>
+                        Master Thesis: AI-assisted anomaly detection from log data
+                    </li>
+                </ul>
+                <p>Technologies:</p>
+                <ul>
+                    <li>Languages: TypeScript, qml, C++, Rust, C# and C</li>
+                    <li>NodeJS</li>
+                    <li>React.js</li>
+                    <li>Next.js</li>
+                    <li>GraphQL</li>
+                    <li>PostgreSQL</li>
+                    <li>Kubernetes</li>
+                    <li>Docker</li>
+                    <li>gRPC</li>
+                    <li>QT</li>
+                    <li>Gitlab</li>
+                    <li>Various Google Cloud Platform products: Firebase, GKE, Stackdriver</li>
+                </ul>
             </div>
-            <div>
-                <div class="section">
-                    <h2>Skills</h2>
-                    <table class="skills-table">
-                        <tr>
-                            <th colspan="2">Web Development</th>
-                        </tr>
-                        <tr>
-                            <td>ReactJS Development</td>
-                            <td>7+ years</td>
-                        </tr>
-                        <tr>
-                            <td>NodeJS Development</td>
-                            <td>7+ years</td>
-                        </tr>
-                        <tr>
-                            <td>GraphQL</td>
-                            <td>7+ years</td>
-                        </tr>
-                        <tr>
-                            <td>Typescript</td>
-                            <td>6+ years</td>
-                        </tr>
-                        <tr>
-                            <td>Next.js</td>
-                            <td>4+ years</td>
-                        </tr>
-                        <tr>
-                            <th colspan="2">Cloud & Database Technologies</th>
-                        </tr>
-                        <tr>
-                            <td>Google Cloud Platform</td>
-                            <td>6+ years</td>
-                        </tr>
-                        <tr>
-                            <td>PostgreSQL</td>
-                            <td>6+ years</td>
-                        </tr>
-                        <tr>
-                            <td>Redis</td>
-                            <td>4+ years</td>
-                        </tr>
-                        <tr>
-                            <td>MySQL</td>
-                            <td>6+ years</td>
-                        </tr>
-                        <tr>
-                            <th colspan="2">DevOps & Version Control</th>
-                        </tr>
-                        <tr>
-                            <td>Git</td>
-                            <td>7+ years</td>
-                        </tr>
-                        <tr>
-                            <td>Docker</td>
-                            <td>7+ years</td>
-                        </tr>
-                        <tr>
-                            <td>Kubernetes</td>
-                            <td>7+ years</td>
-                        </tr>
-                        <tr>
-                            <th colspan="2">Programming Languages & Others</th>
-                        </tr>
-                        <tr>
-                            <td>C++</td>
-                            <td>5+ years</td>
-                        </tr>
-                        <tr>
-                            <td>Rust</td>
-                            <td>4+ years</td>
-                        </tr>
-                        <tr>
-                            <td>PyTorch</td>
-                            <td>1 year</td>
-                        </tr>
-                        <tr>
-                            <td>Lexical</td>
-                            <td>6 months</td>
-                        </tr>
-                    </table>
-                </div>
+            <div class="work-experience">
+                <p><strong>Rediteq Oy</strong> - Full Stack Software Developer</p>
+                <p class="date">April 2016 - Nov 2017</p>
+                <p>Projects:</p>
+                <ul>
+                    <li>Resource planning software for an education management product.</li>
+                    <li>Budgeting software for an education management product.</li>
+                </ul>
+                <p>Technologies:</p>
+                <ul>
+                    <li>C#</li>
+                    <li>ReactJS</li>
+                    <li>Microsoft SQL Server</li>
+                </ul>
             </div>
+        </div>
+        <div class="section">
+            <h2>Education</h2>
+            <div class="education">
+                <p><strong>University of Turku</strong> - Master's degree - 2023</p>
+                <p>Majored in Software Development and minored in Data Science</p>
+            </div>
+            <div class="education">
+                <p><strong>Turku University of Applied Sciences</strong> - Bachelor's degree - 2020</p>
+                <p>Majored in embedded Software Development</p>
+            </div>
+        </div>
+        <div class="section">
+            <h2>Skills</h2>
+            <table class="skills-table">
+                <tr>
+                    <th colspan="2">Web Development</th>
+                </tr>
+                <tr>
+                    <td>ReactJS Development</td>
+                    <td>7+ years</td>
+                </tr>
+                <tr>
+                    <td>NodeJS Development</td>
+                    <td>7+ years</td>
+                </tr>
+                <tr>
+                    <td>GraphQL</td>
+                    <td>7+ years</td>
+                </tr>
+                <tr>
+                    <td>Typescript</td>
+                    <td>6+ years</td>
+                </tr>
+                <tr>
+                    <td>Next.js</td>
+                    <td>4+ years</td>
+                </tr>
+                <tr>
+                    <th colspan="2">Cloud & Database Technologies</th>
+                </tr>
+                <tr>
+                    <td>Google Cloud Platform</td>
+                    <td>6+ years</td>
+                </tr>
+                <tr>
+                    <td>PostgreSQL</td>
+                    <td>6+ years</td>
+                </tr>
+                <tr>
+                    <td>Redis</td>
+                    <td>4+ years</td>
+                </tr>
+                <tr>
+                    <td>MySQL</td>
+                    <td>6+ years</td>
+                </tr>
+                <tr>
+                    <th colspan="2">DevOps & Version Control</th>
+                </tr>
+                <tr>
+                    <td>Git</td>
+                    <td>7+ years</td>
+                </tr>
+                <tr>
+                    <td>Docker</td>
+                    <td>7+ years</td>
+                </tr>
+                <tr>
+                    <td>Kubernetes</td>
+                    <td>7+ years</td>
+                </tr>
+                <tr>
+                    <th colspan="2">Programming Languages & Others</th>
+                </tr>
+                <tr>
+                    <td>C++</td>
+                    <td>5+ years</td>
+                </tr>
+                <tr>
+                    <td>Rust</td>
+                    <td>4+ years</td>
+                </tr>
+                <tr>
+                    <td>PyTorch</td>
+                    <td>1 year</td>
+                </tr>
+                <tr>
+                    <td>Lexical</td>
+                    <td>6 months</td>
+                </tr>
+            </table>
         </div>
     </div>
 </body>
