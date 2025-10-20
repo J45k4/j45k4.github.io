@@ -178,14 +178,15 @@
         }
 
         .col h3 {
-            margin: 8px 0 2px;
+            margin: 12px 0 8px;
             font-size: 14px
         }
 
         .skills-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px
+            gap: 8px;
+            margin: 6px 0 12px
         }
 
         .lang-table {
@@ -220,34 +221,70 @@
         }
 
         @media print {
-            @page { size: A4; margin: 14mm }
+            @page { size: A4; margin: 10mm }
 
-            .page { max-width: none; margin: 0; padding: 0 }
+            html, body { height: 100%; }
+            body { margin: 0; }
+
+            .page { max-width: none; margin: 0; padding: 0; font-size: 12.7px; min-height: 100%; display: flex; flex-direction: column }
 
             .btn, .toolbar { display: none }
 
             a { text-decoration: none; color: inherit }
 
-            header { padding-bottom: 8px; margin-bottom: 10px }
+            header { padding-bottom: 6px; margin-bottom: 8px }
 
-            .card { border: none; padding: 0 }
+            h1 { font-size: 21.5px }
+            h2 { font-size: 12.8px; letter-spacing: .02em; break-after: avoid }
+            .subtitle { font-size: 12px }
+            .contact { font-size: 11px; gap: 6px }
+
+            .card { border: none; padding: 8px }
+            section { margin-bottom: 10px }
 
             /* Keep two columns when printing */
             .layout{
                 display: grid !important;
-                grid-template-columns: 2fr 1fr !important; /* main | sidebar */
-                column-gap: 12mm !important;
+                grid-template-columns: 2.05fr 0.95fr !important; /* main | sidebar */
+                column-gap: 6mm !important;
                 align-items: start !important;
+                flex: 1 0 auto;
             }
             /* Ensure ordering: main first, sidebar second */
             .layout > .col:first-child{ grid-column: 1 !important; }
             aside.col{ grid-column: 2 !important; }
+            /* Compact the left (main) column for print */
+            .layout > .col:first-child{ font-size: 11.7px; line-height: 1.22 }
+            .layout > .col:first-child h2{ font-size: 11.7px; margin: 4px 0 }
+            .layout > .col:first-child .card{ padding: 6px }
+            .layout > .col:first-child .xp-item{ margin-bottom: 8px }
+            .layout > .col:first-child ul{ margin: 3px 0 0 14px }
+            .layout > .col:first-child li{ margin: 1.5px 0 }
+            .role{ gap: 6px }
+            .role-subtitle{ font-size: 15.0px }
+            /* Compact the right sidebar for print */
+            aside.col{ font-size: 11.4px; line-height: 1.2 }
+            aside.col h2{ font-size: 11.4px; margin: 4px 0 }
+            aside.col h3{ font-size: 11.4px; margin: 5px 0 4px }
+            aside.col .card{ padding: 6px }
+            aside.col section.card{ margin-bottom: 6px }
+            aside.col .skills-grid{ gap: 5px; margin: 4px 0 6px }
+            aside.col .tag{ font-size: 10.2px; padding: 1.5px 6.2px }
+            aside.col .lang-table{ font-size: 11px }
+            aside.col .lang-table td{ padding: 1px 6px 1px 0 }
 
-            /* Pagination tuning: allow sections to split, keep items together */
+            /* Pagination tuning */
             section.card{ break-inside: auto; page-break-inside: auto; }
             .xp-item{ break-inside: avoid; page-break-inside: avoid; }
-            .role{ break-after: avoid; }
-            h2{ break-after: avoid; }
+            .role{ break-after: avoid; gap: 8px }
+            .role-subtitle{ font-size: 11.7px }
+
+            ul{ margin: 4px 0 0 16px }
+            li{ margin: 2px 0 }
+
+            .tag{ font-size: 10px; padding: 2px 6px }
+
+            footer { margin-top: auto; }
         }
     </style>
 </head>
@@ -259,7 +296,7 @@
                 <h1 itemprop="name">Teemu Pusa</h1>
                 <div class="subtitle">Software Engineer — Applied AI • Full‑Stack • Rust • Cloud • Robotics</div>
                 <div class="contact">
-                    <span>Turku, Finland</span>
+                    <span>Finland</span>
                     <span>•</span>
                     <span><a href="mailto:pusanteemu@gmail.com" itemprop="email">pusanteemu@gmail.com</a></span>
                     <span>•</span>
@@ -268,29 +305,21 @@
                     <span><a href="https://www.linkedin.com/in/pusanteemu/">linkedin</a></span>
                 </div>
             </div>
-            <div class="toolbar">
-                <button class="btn" onclick="window.print()">Print / Save as PDF</button>
-            </div>
         </header>
 
         <div class="layout">
             <div class="col">
                 <section class="card">
                     <h2>Profile</h2>
-                    <p>Applied AI and full‑stack engineer with 9+ years building production systems that merge software,
-                        robotics, and machine learning. Experienced in Rust, GCP, and Kubernetes, with hands‑on deep
-                        learning work such as a neural‑network‑driven wristband robot and OpenAI‑powered internal code
-                        review tooling. Strong background in enterprise software design, scalable APIs, and intelligent
-                        systems.</p>
+                    <p><strong>Applied AI</strong> and full‑stack engineer with 9+ years building production systems that merge software, robotics, and machine learning. Experienced in <strong>Rust</strong>, <strong>GCP</strong>, and <strong>Kubernetes</strong>, with hands‑on <strong>deep learning</strong> work such as a neural‑network‑driven wristband robot and <strong>OpenAI</strong>‑powered internal code review tooling.</p>
                 </section>
 
                 <section class="card">
                     <h2>AI & Research Projects</h2>
                     <ul>
-                        <li><b>Neural Network Wristband Robot:</b> Designed and trained a CNN to detect wristbands and
+                        <li><b>Neural Network Wristband Robot:</b> Designed and trained a <strong>CNN</strong> to detect wristbands and
                             control a robotic arm for automated dispensing.</li>
-                        <li><b>OpenAI‑Driven Code Review:</b> Developed internal AI review assistant leveraging OpenAI
-                            API integrated with GitLab MR pipelines.</li>
+                        <li><b>OpenAI‑Driven Code Review:</b> Developed internal AI review assistant leveraging <strong>OpenAI API</strong> integrated with <strong>GitLab MR pipelines</strong>.</li>
                         <li><b>Master’s Thesis:</b> Deep Learning for Anomaly Detection in Log Data — developed models
                             for detecting irregularities in large‑scale system logs.</li>
                     </ul>
@@ -301,12 +330,20 @@
 
                     <div class="xp-item">
                         <div class="role">
-                            <div><span>Pusatec Oy</span> — Senior Software Engineer (Applied AI & Full‑Stack)</div>
+                            <div>
+                                <div><span>Pusatec Oy</span> — Senior Software Engineer</div>
+                                <div class="role-subtitle">Applied AI, Full‑stack &amp; Embedded Systems</div>
+                            </div>
                             <small>Nov 2017 – Present</small>
                         </div>
                         <ul>
                             <li>
-                              Designed and implemented the smart‑locker platform end‑to‑end — <b>frontend</b> (React), <b>backend</b> (Rust/gRPC on GCP), and the embedded <b>locker controller</b> — used for:
+                                Created a wristband‑dispensing robot powered by a <strong>neural network</strong> for object detection
+                                and a robotic arm for automated pick‑and‑place.
+                            </li>
+                            <li>Built an AI‑assisted code review platform using the <strong>OpenAI API</strong>, integrated with internal <strong>GitLab</strong> <strong>CI/CD</strong> for automatic MR feedback and analytics.</li>
+                            <li>
+                              Designed and implemented the smart‑locker platform <strong>end‑to‑end</strong> — <b>frontend</b> (<strong>React</strong> and QT), <b>backend</b> (<strong>Node.js</strong> on <strong>GCP</strong>), and the smart lockers controller (<strong>Rust</strong>) — used for:
                               <ul>
                                 <li>Equipment rental and delivery at universities and hospitals.</li>
                                 <li>Self‑service storage where users reserve lockers with a credit card (amusement parks and bus stops).</li>
@@ -314,27 +351,17 @@
                                 <li>Remote monitoring, programming/configuration of locker systems, and operational statistics.</li>
                               </ul>
                             </li>
-                            <li>Created a wristband‑dispensing robot powered by a neural network for object detection
-                                and a robotic arm for automated pick‑and‑place.</li>
-                            <li>Built an AI‑assisted code review platform using the OpenAI API, integrated with internal
-                                GitLab CI/CD for automatic MR feedback and analytics.</li>
-                            <li>Build cloud based ticketing system used with busses and swimming halls.</li>
+                            <li>Built <strong>cloud‑based</strong> ticketing systems used with buses and swimming halls.</li>
                             <li>Created various solutions using MIFARE smart cards in C++, JavaScript, and Rust.</li>
                         </ul>
-                        <div class="tags">
-                            <span class="tag">Rust</span><span class="tag">C++</span><span class="tag">C#</span><span
-                                class="tag">React</span><span class="tag">gRPC</span><span
-                                class="tag">GraphQL</span><span class="tag">OpenAI API</span><span
-                                class="tag">GCP</span><span class="tag">Kubernetes</span><span
-                                class="tag">CI/CD</span><span class="tag">Cloud SQL</span><span
-                                class="tag">Datastore</span><span class="tag">Stackdriver</span><span class="tag">Deep
-                                Learning</span><span class="tag">Robotics</span>
-                        </div>
                     </div>
 
                     <div class="xp-item">
                         <div class="role">
-                            <div><span>Rediteq Oy</span> — Full Stack Software Developer</div>
+                            <div>
+                                <div><span>Rediteq Oy</span> — Full‑stack Software Developer</div>
+                                <div class="role-subtitle">React, C# &amp; MS SQL Server</div>
+                            </div>
                             <small>Apr 2016 – Nov 2017</small>
                         </div>
                         <ul>
@@ -375,35 +402,52 @@
                     <h2>Technical Skills</h2>
                     <h3>Languages</h3>
                     <div class="skills-grid">
-                        <span class="tag">Rust</span><span class="tag">Python</span><span class="tag">C/C++</span><span
-                            class="tag">C#</span><span class="tag">TypeScript</span><span class="tag">Go</span><span
-                            class="tag">Java</span>
+                        <span class="tag"><strong>Rust</strong></span>
+                        <span class="tag"><strong>Python</strong></span>
+                        <span class="tag">C/C++</span>
+                        <span class="tag">C#</span>
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">Go</span>
+                        <span class="tag">Java</span>
                     </div>
                     <h3>AI & ML</h3>
                     <div class="skills-grid">
-                        <span class="tag">OpenAI API</span><span class="tag">TensorFlow</span><span
-                            class="tag">PyTorch</span><span class="tag">CNN</span><span class="tag">Anomaly
-                            Detection</span><span class="tag">Computer Vision</span><span class="tag">tinygrad</span>
+                        <span class="tag"><strong>OpenAI API</strong></span>
+                        <span class="tag"><strong>PyTorch</strong></span>
+                        <span class="tag">Anomaly Detection</span>
+                        <span class="tag">Computer Vision</span>
+                        <span class="tag">tinygrad</span>
                     </div>
                     <h3>Cloud & DevOps</h3>
                     <div class="skills-grid">
-                        <span class="tag">GCP</span><span class="tag">GKE</span><span class="tag">Kubernetes</span><span
-                            class="tag">Docker</span><span class="tag">CI/CD</span><span class="tag">GitLab</span>
+                        <span class="tag"><strong>GCP</strong></span>
+                        <span class="tag"><strong>GKE</strong></span>
+                        <span class="tag"><strong>Kubernetes</strong></span>
+                        <span class="tag">Docker</span>
+                        <span class="tag"><strong>CI/CD</strong></span>
+                        <span class="tag"><strong>GitLab</strong></span>
                     </div>
                     <h3>Frameworks</h3>
                     <div class="skills-grid">
-                        <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">gRPC</span><span
-                            class="tag">GraphQL</span><span class="tag">REST</span>
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag"><strong>gRPC</strong></span>
+                        <span class="tag">GraphQL</span>
+                        <span class="tag">REST</span>
                     </div>
                     <h3>Databases</h3>
                     <div class="skills-grid">
-                        <span class="tag">MySQL</span><span class="tag">PostgreSQL</span><span class="tag">Cloud
-                            SQL</span><span class="tag">Datastore</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">Cloud SQL</span>
+                        <span class="tag">Datastore</span>
                     </div>
                     <h3>Hardware & IoT</h3>
                     <div class="skills-grid">
-                        <span class="tag">Robotics</span><span class="tag">MIFARE</span><span class="tag">CAN
-                            bus</span><span class="tag">Linux</span>
+                        <span class="tag">Robotics</span>
+                        <span class="tag">MIFARE</span>
+                        <span class="tag">CAN bus</span>
+                        <span class="tag">Linux</span>
                     </div>
                 </section>
 
@@ -427,6 +471,25 @@
                             <td>Basics</td>
                         </tr>
                     </table>
+                </section>
+
+                <section class="card">
+                    <h2>Open Source & Side Projects</h2>
+                    <ul>
+                        <li><b>PuppyBot</b>: Modular 4-wheeled robot platform (ESP32-C3), hot-swappable batteries, web/phone control.</li>
+                        <li><b>PuppyArm</b>: Servo-based 3D-printed robotic arm (ESP32); designed for education and hobby use.</li>
+                        <li><b>PGE</b>: Game engine in Rust for learning and developing my game ideas.</li>
+                    </ul>
+                </section>
+
+                <section class="card">
+                    <h2>Interests</h2>
+                    <div class="skills-grid">
+                        <span class="tag">Open-source robotics</span>
+                        <span class="tag">ML systems & papers</span>
+                        <span class="tag">Embedded electronics</span>
+                        <span class="tag">Edge AI (RK3588/Jetson)</span>
+                    </div>
                 </section>
             </aside>
         </div>
