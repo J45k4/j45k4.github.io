@@ -1,314 +1,440 @@
-<!-- wkhtmltopdf cv.html cv.pdf -->
-
 <!DOCTYPE html>
-<html>
+<html lang="en" itemscope itemtype="https://schema.org/Person">
 
 <head>
-    <title>Teemu Pusa - CV</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Teemu Pusa — CV</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #333;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
+        :root {
+            --bg: #fff;
+            --fg: #111;
+            --muted: #555;
+            --accent: #0a7cff;
+            --rule: #e6e6e6;
+            --font: ui-sans-serif, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
         }
 
-        .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        html,
+        body {
+            background: var(--bg);
+            color: var(--fg);
+            font-family: var(--font);
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        .page {
+            max-width: 1000px;
+            margin: 24px auto;
+            padding: 24px
         }
 
         header {
-            text-align: center;
-            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            border-bottom: 1px solid var(--rule);
+            padding-bottom: 16px;
+            margin-bottom: 20px
         }
 
-        header h1 {
-            margin: 0;
-            color: #333;
+        #avatar {
+            width: 84px;
+            height: 84px;
+            border-radius: 16px;
+            background: #f2f2f2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700
         }
 
-        header p {
-            margin: 5px 0;
-            color: #666;
+        h1 {
+            font-size: 28px;
+            margin: 0
         }
 
-        .section {
-            margin-top: 20px;
+        .subtitle {
+            color: var(--muted);
+            margin-top: 4px
+        }
+
+        .contact {
+            margin-top: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            color: var(--muted);
+            font-size: 14px
+        }
+
+        .contact span {
+            display: flex;
+            gap: 6px;
+            align-items: center
+        }
+
+        .toolbar {
+            margin: 8px 0 0 auto
+        }
+
+        .btn {
+            border: 1px solid var(--rule);
+            padding: 6px 10px;
+            border-radius: 10px;
+            font-size: 13px;
+            background: #fafafa
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 2.2fr 1.1fr;
+            gap: 22px
+        }
+
+        section {
+            margin-bottom: 18px
         }
 
         h2 {
-            border-bottom: 2px solid #4CAF50;
+            font-size: 15px;
+            letter-spacing: .03em;
+            text-transform: uppercase;
             color: #333;
-            padding-bottom: 5px;
+            margin: 10px 0
         }
 
-        .work-experience p,
-        .education p {
-            margin: 10px 0;
+        .card {
+            border: 1px solid var(--rule);
+            border-radius: 14px;
+            padding: 14px
         }
 
-        .skills-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
+        .xp-item {
+            margin-bottom: 14px
         }
 
-        .skills-table th,
-        .skills-table td {
-            text-align: left;
-            padding: 8px;
+        .xp-item:last-child {
+            margin-bottom: 0
         }
 
-        .skills-table th {
-            background-color: #4CAF50;
-            color: white;
+        .role {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline; /* keep date aligned with first line */
+            gap: 10px;
+        }
+        .role > div { /* left side (institution + degree) */
+            flex: 1 1 auto;
+            font-weight: 600; /* keep bold on the left label only */
+        }
+        .role-subtitle {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+        .role small {
+            flex: 0 0 auto;
+            color: var(--muted);
+            font-weight: 500;
+            white-space: nowrap; /* prevent odd wraps */
+            text-align: right;
         }
 
-        .skills-table tr:nth-child(even) {
-            background-color: #f2f2f2;
+        ul {
+            margin: 6px 0 0 18px
         }
 
-        .date {
-            font-style: italic;
-            color: #666;
+        li {
+            margin: 4px 0
         }
 
-        @media screen and (max-width: 600px) {
-            .container {
-                width: 95%;
-                margin: 20px auto;
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px
+        }
+
+        .tag {
+            border: 1px solid var(--rule);
+            border-radius: 999px;
+            padding: 3px 8px;
+            font-size: 12px;
+            color: #333
+        }
+
+        .col h3 {
+            margin: 8px 0 2px;
+            font-size: 14px
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px
+        }
+
+        .lang-table {
+            font-size: 14px;
+            color: #333
+        }
+
+        .lang-table td {
+            padding: 2px 8px 2px 0
+        }
+
+        footer {
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 12px;
+            text-align: center
+        }
+
+        @media (max-width:900px) {
+            .layout {
+                grid-template-columns: 1fr
             }
 
-            .work-experience,
-            .education,
-            .skills-table {
-                margin-left: 0;
+            header {
+                flex-direction: column;
+                align-items: flex-start
             }
+
+            .toolbar {
+                margin: 0
+            }
+        }
+
+        @media print {
+            @page { size: A4; margin: 14mm }
+
+            .page { max-width: none; margin: 0; padding: 0 }
+
+            .btn, .toolbar { display: none }
+
+            a { text-decoration: none; color: inherit }
+
+            header { padding-bottom: 8px; margin-bottom: 10px }
+
+            .card { border: none; padding: 0 }
+
+            /* Keep two columns when printing */
+            .layout{
+                display: grid !important;
+                grid-template-columns: 2fr 1fr !important; /* main | sidebar */
+                column-gap: 12mm !important;
+                align-items: start !important;
+            }
+            /* Ensure ordering: main first, sidebar second */
+            .layout > .col:first-child{ grid-column: 1 !important; }
+            aside.col{ grid-column: 2 !important; }
+
+            /* Pagination tuning: allow sections to split, keep items together */
+            section.card{ break-inside: auto; page-break-inside: auto; }
+            .xp-item{ break-inside: avoid; page-break-inside: avoid; }
+            .role{ break-after: avoid; }
+            h2{ break-after: avoid; }
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
+    <div class="page">
         <header>
-            <h1>Teemu Pusa</h1>
-            <p>Email: pusanteemu@gmail.com</p>
+            <div>
+                <h1 itemprop="name">Teemu Pusa</h1>
+                <div class="subtitle">Software Engineer — Applied AI • Full‑Stack • Rust • Cloud • Robotics</div>
+                <div class="contact">
+                    <span>Turku, Finland</span>
+                    <span>•</span>
+                    <span><a href="mailto:pusanteemu@gmail.com" itemprop="email">pusanteemu@gmail.com</a></span>
+                    <span>•</span>
+                    <span><a href="https://github.com/J45k4" itemprop="url">github.com/puppy</a></span>
+                    <span>•</span>
+                    <span><a href="https://www.linkedin.com/in/pusanteemu/">linkedin</a></span>
+                </div>
+            </div>
+            <div class="toolbar">
+                <button class="btn" onclick="window.print()">Print / Save as PDF</button>
+            </div>
         </header>
-        <div class="section">
-            <h2>Introduction</h2>
-            <p>
-                I am an enthusiastic Software Developer with almost 8 years of professional software development
-                experience and a strong passion for continuous learning and innovation. Most of my professional
-                experience has been in full-stack web development with Node.js and TypeScript, however I am
-                not affraid to get my hands dirty with Rust, C++ or C. I have a strong background in cloud
-                technologies, such as Google Cloud Platform, and I am familiar with various database technologies,
-                such as PostgreSQL, MySQL, Firestore and Redis. I am also experienced in DevOps and version 
-                control, with a strong understanding of Docker, Kubernetes and Git.
-            </p>
-            <p>
-                My primary hobby revolves around programming, where I dedicate myself to exploring and mastering
-                new technologies and concepts.
-                In my free time, I engage in various projects, with a particular focus on developing web
-                applications, designing games, and learning about artificial intelligence. I am also interested
-                compilers and programming language implementation practices.
-            </p>
-        </div>
-        <!-- <div class="section">
-            <h2>Personal Projects</h2>
-            <p>
-            <ul>
-                <li><a href="https://github.com/J45k4/catgpt">CatGPT</a></li>
-                <li><a href="https://github.com/J45k4/talktocow">Talktocow</a></li>
-                <li><a href="https://github.com/J45k4/FlexScript">FlexScript</a></li>
-            </ul>
-            </p>
-        </div> -->
-        <div class="section">
-            <h2>Work Experience</h2>
-            <div class="work-experience">
-                <p><strong>Pusatec Oy</strong> - Full Stack Software Developer</p>
-                <p class="date">Nov 2017 - Present</p>
-                <!-- <p>
-                            Pusatec produces smart locker systems, buss payment terminals and access control systems. 
-                            It is has largest market share in providing smart lockersystems and access control systems.
-                            and it is largest payment terminal provider.
-                        </p> -->
-                <p>Projects:</p>
-                <ul>
-                    <li>
-                        Full Stack Software Developer for an online ticketing system utilized by
-                        bus payment terminals, swimming halls/spas, and restaurants.
-                    </li>
-                    <li>
-                        Full Stack Software Developer and System Maintainer
-                        for a real-time management system for smart locker systems and access control gates.
-                    </li>
-                    <li>
-                        Rust and C++ development for embedded payment systems.
-                    </li>
-                    <li>
-                        Develop software to communicate with smart lockers using canbus.
-                    </li>
-                    <li>
-                        Develop software to communicate with MIFARE cards using NFC.
-                    </li>
-                    <li>
-                        Develop delivery software using smart lockers manufactered by Pusatec.
-                    </li>
-                    <li>
-                        Master Thesis: AI-assisted anomaly detection from log data
-                    </li>
-                </ul>
-                <p>Technologies:</p>
-                <ul>
-                    <li>Languages: TypeScript, qml, C++, Rust, C# and C</li>
-                    <li>NodeJS</li>
-                    <li>React.js</li>
-                    <li>Next.js</li>
-                    <li>GraphQL</li>
-                    <li>PostgreSQL</li>
-                    <li>Kubernetes</li>
-                    <li>Docker</li>
-                    <li>gRPC</li>
-                    <li>QT</li>
-                    <li>Gitlab</li>
-                    <li>Various Google Cloud Platform products: Firebase, GKE, Stackdriver</li>
-                </ul>
+
+        <div class="layout">
+            <div class="col">
+                <section class="card">
+                    <h2>Profile</h2>
+                    <p>Applied AI and full‑stack engineer with 9+ years building production systems that merge software,
+                        robotics, and machine learning. Experienced in Rust, GCP, and Kubernetes, with hands‑on deep
+                        learning work such as a neural‑network‑driven wristband robot and OpenAI‑powered internal code
+                        review tooling. Strong background in enterprise software design, scalable APIs, and intelligent
+                        systems.</p>
+                </section>
+
+                <section class="card">
+                    <h2>AI & Research Projects</h2>
+                    <ul>
+                        <li><b>Neural Network Wristband Robot:</b> Designed and trained a CNN to detect wristbands and
+                            control a robotic arm for automated dispensing.</li>
+                        <li><b>OpenAI‑Driven Code Review:</b> Developed internal AI review assistant leveraging OpenAI
+                            API integrated with GitLab MR pipelines.</li>
+                        <li><b>Master’s Thesis:</b> Deep Learning for Anomaly Detection in Log Data — developed models
+                            for detecting irregularities in large‑scale system logs.</li>
+                    </ul>
+                </section>
+
+                <section class="card">
+                    <h2>Experience</h2>
+
+                    <div class="xp-item">
+                        <div class="role">
+                            <div><span>Pusatec Oy</span> — Senior Software Engineer (Applied AI & Full‑Stack)</div>
+                            <small>Nov 2017 – Present</small>
+                        </div>
+                        <ul>
+                            <li>
+                              Designed and implemented the smart‑locker platform end‑to‑end — <b>frontend</b> (React), <b>backend</b> (Rust/gRPC on GCP), and the embedded <b>locker controller</b> — used for:
+                              <ul>
+                                <li>Equipment rental and delivery at universities and hospitals.</li>
+                                <li>Self‑service storage where users reserve lockers with a credit card (amusement parks and bus stops).</li>
+                                <li>Real‑time usage feeds from smart lockers and access‑control gates to the cashier system in swimming halls and spas.</li>
+                                <li>Remote monitoring, programming/configuration of locker systems, and operational statistics.</li>
+                              </ul>
+                            </li>
+                            <li>Created a wristband‑dispensing robot powered by a neural network for object detection
+                                and a robotic arm for automated pick‑and‑place.</li>
+                            <li>Built an AI‑assisted code review platform using the OpenAI API, integrated with internal
+                                GitLab CI/CD for automatic MR feedback and analytics.</li>
+                            <li>Build cloud based ticketing system used with busses and swimming halls.</li>
+                            <li>Created various solutions using MIFARE smart cards in C++, JavaScript, and Rust.</li>
+                        </ul>
+                        <div class="tags">
+                            <span class="tag">Rust</span><span class="tag">C++</span><span class="tag">C#</span><span
+                                class="tag">React</span><span class="tag">gRPC</span><span
+                                class="tag">GraphQL</span><span class="tag">OpenAI API</span><span
+                                class="tag">GCP</span><span class="tag">Kubernetes</span><span
+                                class="tag">CI/CD</span><span class="tag">Cloud SQL</span><span
+                                class="tag">Datastore</span><span class="tag">Stackdriver</span><span class="tag">Deep
+                                Learning</span><span class="tag">Robotics</span>
+                        </div>
+                    </div>
+
+                    <div class="xp-item">
+                        <div class="role">
+                            <div><span>Rediteq Oy</span> — Full Stack Software Developer</div>
+                            <small>Apr 2016 – Nov 2017</small>
+                        </div>
+                        <ul>
+                            <li>Built education management software for resource planning and budgeting.</li>
+                            <li>Delivered React frontends and C# backends with Microsoft SQL Server.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <h2>Education</h2>
+                    <div class="xp-item">
+                        <div class="role">
+                            <div>
+                                <div>University of Turku — Master’s Degree</div>
+                                <div class="role-subtitle">Software Development; Minor in Data Science</div>
+                            </div>
+                            <small>2022</small>
+                        </div>
+                        <ul>
+                            <li>Thesis: Deep Learning for Anomaly Detection in Log Data.</li>
+                        </ul>
+                    </div>
+                    <div class="xp-item">
+                        <div class="role">
+                            <div>
+                                <div>Turku University of Applied Sciences — Bachelor’s Degree</div>
+                                <div class="role-subtitle">Embedded Software Development</div>
+                            </div>
+                            <small>2020</small>
+                        </div>
+                    </div>
+                </section>
             </div>
-            <div class="work-experience">
-                <p><strong>Rediteq Oy</strong> - Full Stack Software Developer</p>
-                <p class="date">April 2016 - Nov 2017</p>
-                <p>Projects:</p>
-                <ul>
-                    <li>Resource planning software for an education management product.</li>
-                    <li>Budgeting software for an education management product.</li>
-                </ul>
-                <p>Technologies:</p>
-                <ul>
-                    <li>C#</li>
-                    <li>ReactJS</li>
-                    <li>Microsoft SQL Server</li>
-                </ul>
-            </div>
+
+            <aside class="col">
+                <section class="card">
+                    <h2>Technical Skills</h2>
+                    <h3>Languages</h3>
+                    <div class="skills-grid">
+                        <span class="tag">Rust</span><span class="tag">Python</span><span class="tag">C/C++</span><span
+                            class="tag">C#</span><span class="tag">TypeScript</span><span class="tag">Go</span><span
+                            class="tag">Java</span>
+                    </div>
+                    <h3>AI & ML</h3>
+                    <div class="skills-grid">
+                        <span class="tag">OpenAI API</span><span class="tag">TensorFlow</span><span
+                            class="tag">PyTorch</span><span class="tag">CNN</span><span class="tag">Anomaly
+                            Detection</span><span class="tag">Computer Vision</span><span class="tag">tinygrad</span>
+                    </div>
+                    <h3>Cloud & DevOps</h3>
+                    <div class="skills-grid">
+                        <span class="tag">GCP</span><span class="tag">GKE</span><span class="tag">Kubernetes</span><span
+                            class="tag">Docker</span><span class="tag">CI/CD</span><span class="tag">GitLab</span>
+                    </div>
+                    <h3>Frameworks</h3>
+                    <div class="skills-grid">
+                        <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">gRPC</span><span
+                            class="tag">GraphQL</span><span class="tag">REST</span>
+                    </div>
+                    <h3>Databases</h3>
+                    <div class="skills-grid">
+                        <span class="tag">MySQL</span><span class="tag">PostgreSQL</span><span class="tag">Cloud
+                            SQL</span><span class="tag">Datastore</span>
+                    </div>
+                    <h3>Hardware & IoT</h3>
+                    <div class="skills-grid">
+                        <span class="tag">Robotics</span><span class="tag">MIFARE</span><span class="tag">CAN
+                            bus</span><span class="tag">Linux</span>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <h2>Languages</h2>
+                    <table class="lang-table">
+                        <tr>
+                            <td>Finnish</td>
+                            <td>Native</td>
+                        </tr>
+                        <tr>
+                            <td>English</td>
+                            <td>Excellent</td>
+                        </tr>
+                        <tr>
+                            <td>Chinese</td>
+                            <td>Basics</td>
+                        </tr>
+                        <tr>
+                            <td>Swedish</td>
+                            <td>Basics</td>
+                        </tr>
+                    </table>
+                </section>
+            </aside>
         </div>
-        <div class="section">
-            <h2>Education</h2>
-            <div class="education">
-                <p><strong>University of Turku</strong> - Master's degree - 2023</p>
-                <p>Majored in Software Development and minored in Data Science</p>
-            </div>
-            <div class="education">
-                <p><strong>Turku University of Applied Sciences</strong> - Bachelor's degree - 2020</p>
-                <p>Majored in embedded Software Development</p>
-            </div>
-        </div>
-        <div class="section">
-            <h2>Skills</h2>
-            <table class="skills-table">
-                <tr>
-                    <th colspan="2">Web Development</th>
-                </tr>
-                <tr>
-                    <td>ReactJS Development</td>
-                    <td>8+ years</td>
-                </tr>
-                <tr>
-                    <td>NodeJS Development</td>
-                    <td>8+ years</td>
-                </tr>
-                <tr>
-                    <td>GraphQL</td>
-                    <td>7+ years</td>
-                </tr>
-                <tr>
-                    <td>ASP.NET</td>
-                    <td>2 years</td>
-                </tr>
-                <tr>
-                    <th colspan="2">Cloud & Database Technologies</th>
-                </tr>
-                <tr>
-                    <td>Google Cloud Platform</td>
-                    <td>6+ years</td>
-                </tr>
-                <tr>
-                    <td>PostgreSQL</td>
-                    <td>6+ years</td>
-                </tr>
-                <tr>
-                    <td>Redis</td>
-                    <td>4+ years</td>
-                </tr>
-                <tr>
-                    <td>MySQL</td>
-                    <td>6+ years</td>
-                </tr>
-                <tr>
-                    <th colspan="2">DevOps & Version Control</th>
-                </tr>
-                <tr>
-                    <td>Git</td>
-                    <td>7+ years</td>
-                </tr>
-                <tr>
-                    <td>Docker</td>
-                    <td>7+ years</td>
-                </tr>
-                <tr>
-                    <td>Kubernetes</td>
-                    <td>7+ years</td>
-                </tr>
-                <tr>
-                    <td>CI/CD</td>
-                    <td>7+ years</td>
-                </tr>
-                <tr>
-                    <th colspan="2">Programming Languages</th>
-                </tr>
-                <tr>
-                    <td>C++</td>
-                    <td>5+ years</td>
-                </tr>
-                <tr>
-                    <td>Rust</td>
-                    <td>4+ years</td>
-                </tr>
-                <tr>
-                    <td>JavaScript</td>
-                    <td>10+ years</td>
-                </tr>
-                <tr>
-                    <td>Go</td>
-                    <td>5+ years</td>
-                </tr>
-                <tr>
-                    <td>Typescript</td>
-                    <td>6+ years</td>
-                </tr>
-                <tr>
-                    <th colspan="2">Other</th>
-                </tr>
-                <tr>
-                    <td>Redux</td>
-                    <td>2 years</td>
-                </tr>
-                <tr>
-                    <td>PyTorch</td>
-                    <td>1 year</td>
-                </tr>
-                <tr>
-                    <td>Lexical</td>
-                    <td>6 months</td>
-                </tr>
-            </table>
-        </div>
+
+        <footer>
+            Teemu Pusa — CV.
+        </footer>
     </div>
 </body>
+
 </html>
